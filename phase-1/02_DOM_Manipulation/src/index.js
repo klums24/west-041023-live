@@ -91,7 +91,50 @@ function formatPrice(price) {
     // and create the html struture for rendering 
     // that book and insert it into our webpage!
 
-    // function renderBook(book) {
+    function renderBook(book) {
+
+        //outer li
+        const list = document.createElement("li");
+        list.class = "list-li";
+
+        //header
+        const header3 = document.createElement("h3")
+        header3.innerText = book.title;
+
+        //author of book
+        const pAuthor = document.createElement("p");
+        pAuthor.innerText = book.author;
+
+        //price of book
+        const p2 = document.createElement("p");
+        p2.innerText = formatPrice(book.price);
+
+        //image
+        const image = document.createElement("img");
+        image.src = book.imageUrl;
+        image.alt = book.title;
+
+        //button
+        const button = document.createElement("button");
+        button.innerText = "Delete";
+
+        
+
+        list.append(header3, pAuthor, p2, image, button)
+        
+        //figure out where to put book
+        //target that place with querySelector/getElementById
+
+        const ulList = document.getElementById("book-list")
+
+        //append the list of book(s)
+        ulList.appendChild(list);
+    }
+
+        //
+        bookStore.inventory.forEach(bookObj => renderBook(bookObj));
+    renderBook();
+
     // should create an li element that looks something like this:
     // <li class="list-li">
     //   <h3>Eloquent JavaScript : A Modern Introduction to Programming</h3>
@@ -100,5 +143,14 @@ function formatPrice(price) {
     //   <img src="https://images-na.ssl-images-amazon.com/images/I/51IKycqTPUL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg" alt="Eloquent JavaScript cover"/>
     //   <button>Delete</button>
     // </li>
+    
 
-  
+  /*   function addParagraph() {
+    const p = document.createElement("p") // I just created a new orphan node
+    p.innerText = "Something random!"
+    p.id = "random"
+    document.querySelector("main").appendChild(p)
+    document.querySelector("main").append(p, "a string here", 7)
+}
+addParagraph()
+*/
